@@ -1,6 +1,7 @@
-
 module divisible_by_5 (
-    input logic clk, input logic rst_n, input logic serial_i,
+    input logic clk,
+    input logic rst_n,
+    input logic serial_i,
     output logic divisible_by_5_o
 );
 
@@ -22,6 +23,7 @@ module divisible_by_5 (
                 REMAINDER_2: state_d = REMAINDER_0;
                 REMAINDER_3: state_d = REMAINDER_2;
                 REMAINDER_4: state_d = REMAINDER_4;
+                default: state_d = REMAINDER_0; 
             endcase
         end else begin
             case (state_q)
@@ -30,6 +32,7 @@ module divisible_by_5 (
                 REMAINDER_2: state_d = REMAINDER_4;
                 REMAINDER_3: state_d = REMAINDER_1;
                 REMAINDER_4: state_d = REMAINDER_3;
+                default: state_d = REMAINDER_0; 
             endcase
         end
     end
@@ -43,3 +46,4 @@ module divisible_by_5 (
     end
 
 endmodule
+
