@@ -17,21 +17,13 @@ module divisible_by_5 (
         state_d = REMAINDER_0;  
 
         if (serial_i) begin
-            case (state_q) 
-                REMAINDER_0: state_d = REMAINDER_1;
-                REMAINDER_1: state_d = REMAINDER_3;
-                REMAINDER_2: state_d = REMAINDER_0;
-                REMAINDER_3: state_d = REMAINDER_2;
-                REMAINDER_4: state_d = REMAINDER_4;
+            case (state_q) // 2*num + 1
+                REMAINDER_0: state_d = REMAINDER_1; REMAINDER_1: state_d = REMAINDER_3; REMAINDER_2: state_d = REMAINDER_0; REMAINDER_3: state_d = REMAINDER_2;REMAINDER_4: state_d = REMAINDER_4;
                 default: state_d = REMAINDER_0; 
             endcase
         end else begin
-            case (state_q)
-                REMAINDER_0: state_d = REMAINDER_0;
-                REMAINDER_1: state_d = REMAINDER_2;
-                REMAINDER_2: state_d = REMAINDER_4;
-                REMAINDER_3: state_d = REMAINDER_1;
-                REMAINDER_4: state_d = REMAINDER_3;
+            case (state_q) // 2*num + 0
+                REMAINDER_0: state_d = REMAINDER_0; REMAINDER_1: state_d = REMAINDER_2;REMAINDER_2: state_d = REMAINDER_4; REMAINDER_3: state_d = REMAINDER_1;REMAINDER_4: state_d = REMAINDER_3;
                 default: state_d = REMAINDER_0; 
             endcase
         end
